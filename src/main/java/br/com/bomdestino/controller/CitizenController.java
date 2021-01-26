@@ -12,6 +12,8 @@ import javax.annotation.security.RolesAllowed;
 import javax.validation.constraints.NotNull;
 import java.security.Principal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/cidadao")
@@ -23,16 +25,17 @@ public class CitizenController {
 
     @RolesAllowed({"cpf", "cnpj"})
     @RequestMapping(value = "/iptu", method = RequestMethod.POST)
-    public ResponseEntity<STURResponseDTO> getIPTU(@RequestHeader String Authorization,
+    public ResponseEntity<List<STURResponseDTO>> getIPTU(@RequestHeader String Authorization,
                                                    @RequestBody STURRequestDTO requestDTO) {
         log.info("CitizenController.getIPTU - start - receive request [{}]", requestDTO);
-        return citizenService.getIPTU(requestDTO);
+
+        return ResponseEntity.ok(citizenService.getIPTU(requestDTO));
     }
 
     @RolesAllowed("rural")
     @RequestMapping(value = "/itr", method = RequestMethod.GET)
-    public ResponseEntity<STURResponseDTO> getITR(@RequestHeader String Authorization,
-                                           @RequestBody STURRequestDTO requestDTO) {
+    public ResponseEntity<List<STURResponseDTO>> getITR(@RequestHeader String Authorization,
+                                                        @RequestBody STURRequestDTO requestDTO) {
         log.info("CitizenController.getITR - start - receive request [{}]", requestDTO);
         return citizenService.getITR(requestDTO);
     }

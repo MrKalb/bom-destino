@@ -7,13 +7,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
 @FeignClient(value = "wiremock", url = "http://2vwlq.mocklab.io")
 public interface STURClient {
 
     @PostMapping("/iptu")
-    ResponseEntity<STURResponseDTO> getIPTU(@RequestBody STURRequestDTO requestDTO);
+    ResponseEntity<List<STURResponseDTO>> getIPTU(@RequestBody STURRequestDTO requestDTO);
 
     @PostMapping("/itr")
-    ResponseEntity<STURResponseDTO> getITR(@RequestBody STURRequestDTO requestDTO);
+    ResponseEntity<List<STURResponseDTO>> getITR(@RequestBody STURRequestDTO requestDTO);
 
 }

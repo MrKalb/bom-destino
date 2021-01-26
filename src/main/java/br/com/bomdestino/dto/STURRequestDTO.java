@@ -11,6 +11,6 @@ public class STURRequestDTO {
 
     private String id;
 
-    private LocalDate dateToRequest;
+    private String dateToRequest;
 
 }
