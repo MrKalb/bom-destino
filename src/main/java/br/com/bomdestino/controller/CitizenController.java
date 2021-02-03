@@ -32,12 +32,13 @@ public class CitizenController {
         return ResponseEntity.ok(citizenService.getIPTU(requestDTO));
     }
 
-    @RolesAllowed("rural")
-    @RequestMapping(value = "/itr", method = RequestMethod.GET)
+    @RolesAllowed({"itr"})
+    @RequestMapping(value = "/itr", method = RequestMethod.POST)
     public ResponseEntity<List<STURResponseDTO>> getITR(@RequestHeader String Authorization,
                                                         @RequestBody STURRequestDTO requestDTO) {
         log.info("CitizenController.getITR - start - receive request [{}]", requestDTO);
-        return citizenService.getITR(requestDTO);
+
+        return ResponseEntity.ok(citizenService.getITR(requestDTO));
     }
 
 }

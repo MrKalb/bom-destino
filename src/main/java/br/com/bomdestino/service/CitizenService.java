@@ -26,11 +26,11 @@ public class CitizenService {
 
     }
 
-    public ResponseEntity<List<STURResponseDTO>> getITR(STURRequestDTO requestDTO){
+    public List<STURResponseDTO> getITR(STURRequestDTO requestDTO){
         ResponseEntity<List<STURResponseDTO>> responseEntity = sturClient.getIPTU(requestDTO);
 
         log.info("CitizenService.getITR - response [{}]", responseEntity);
 
-        return  responseEntity;
+        return  responseEntity.getBody();
     }
 }
