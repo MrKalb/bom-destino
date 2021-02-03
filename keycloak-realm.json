@@ -51,6 +51,14 @@
         "attributes": {}
       },
       {
+        "id": "4cf10ebc-8745-404f-a8db-8d006ede539c",
+        "name": "itr_role",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "bom-destino-user",
+        "attributes": {}
+      },
+      {
         "id": "b9de0933-1335-4c73-bcb9-eda48a948188",
         "name": "offline_access",
         "description": "${role_offline-access}",
@@ -378,6 +386,24 @@
             "client": {
               "springboot-application": [
                 "cnpj"
+              ]
+            }
+          },
+          "clientRole": true,
+          "containerId": "11e88360-e59f-45e8-8c24-a802a57b363d",
+          "attributes": {}
+        },
+        {
+          "id": "df957c7e-f88b-4101-9056-e2af48df984f",
+          "name": "itr",
+          "composite": true,
+          "composites": {
+            "realm": [
+              "itr_role"
+            ],
+            "client": {
+              "springboot-application": [
+                "itr"
               ]
             }
           },
